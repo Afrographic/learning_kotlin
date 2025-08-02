@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">GreetingApp</string>
+    <string name="welcome">Hello My Friends</string>
+    <string-array name="fruits">
+        <item>Apple</item>
+        <item>Orange</item>
+        <item>Banana</item>
+    </string-array>
 </resources>

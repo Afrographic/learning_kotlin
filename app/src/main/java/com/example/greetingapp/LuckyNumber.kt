@@ -1,6 +1,7 @@
 package com.example.greetingapp
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -32,6 +33,11 @@ class LuckyNumber : AppCompatActivity() {
 
         var randomNum = generateRandomNum();
         luckyNumText.text = randomNum.toString();
+
+        shareBtn.setOnClickListener(){
+            shareData(username,randomNum);
+        }
+
     }
 
 
@@ -44,5 +50,14 @@ class LuckyNumber : AppCompatActivity() {
     fun generateRandomNum():Int{
         val random = Random.nextInt(1000);
         return random;
+    }
+
+    //Sharing the username & number
+    fun shareData(username:String,num:Int){
+        var i:Intent = Intent(Intent.ACTION_SEND);
+        i.setType("text/plain");
+        i.putExtra(Intent.EXTRA_SUBJECT,"$username is Lucky today");
+        i.putExtra(Intent.EXTRA_TEXT,"His lucky number is $num");
+        startActivity(i);
     }
 }
